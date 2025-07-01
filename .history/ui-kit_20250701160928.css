@@ -13,7 +13,8 @@
   src: url("./assets/fonts/stratosskyengweb-medium.woff2") format("woff2");
 }
 
-html {
+.html {
+  scrollbar-width: none;
   overflow-x: hidden;
 }
 

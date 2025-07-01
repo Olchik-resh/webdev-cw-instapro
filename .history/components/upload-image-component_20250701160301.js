@@ -44,3 +44,4 @@ export function renderUploadImageComponent({ element, onImageUrlChange }) {
   };
   render();
 }
+

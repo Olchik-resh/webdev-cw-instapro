@@ -61,7 +61,7 @@ body {
 }
 
 .label {
-  color: #003087;
+      color: #003087;
 }
 
 .form--login {
@@ -123,7 +123,7 @@ body {
   font-family: StratosSkyeng, sans-serif;
 }
 #description-input::placeholder {
-  color: #003087;
+  color:#003087;
   font-family: StratosSkyeng, sans-serif;
 }
 .input {
@@ -401,3 +401,4 @@ body {
     font-size: 14px;
   }
 }
+

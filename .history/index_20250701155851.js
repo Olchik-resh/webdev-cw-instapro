@@ -75,7 +75,7 @@ export const goToPage = (newPage, data = {}) => {
         .catch((error) => {
           console.error("Error fetching posts:", error);
           showNotification(`Ошибка загрузки постов: ${error.message}`);
-          page = POSTS_PAGE;
+          page = POSTS_PAGE; 
           renderApp();
         });
       return;
