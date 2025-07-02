@@ -27,6 +27,7 @@ export function renderPostsPageComponent({
   likePost,
   dislikePost,
   deletePost,
+  userId,
 }) {
   const renderPosts = () => {
     const postsHtml = posts
@@ -86,36 +87,12 @@ export function renderPostsPageComponent({
       user,
       goToPage,
     });
-    for (const userEl of document.querySelectorAll(".post-header__user-name")) {
+    for (const userEl of document.querySelectorAll(".post-header")) {
       userEl.addEventListener("click", () => {
         goToPage(USER_POSTS_PAGE, { userId: userEl.dataset.userId });
       });
     }
-    for (const likeButton of document.querySelectorAll(".like-button")) {
-      likeButton.addEventListener("click", () => {
-        const postId = likeButton.dataset.postId;
-        const post = posts.find((p) => p.id === postId);
-        const token = getToken();
-        const action = post.isLiked ? dislikePost : likePost;
-
-        if (!token) {
-          showNotification("Пожалуйста, войдите в приложение");
-          goToPage(POSTS_PAGE);
-          return;
-        }
-
-        action({ token, postId })
-          .then(({ post: updatedPost }) => {
-            const index = posts.findIndex((p) => p.id === postId);
-            posts[index] = updatedPost;
-            renderPosts();
-          })
-          .catch((error) => {
-            console.error("Error liking post:", error);
-            showNotification(`Ошибка лайка: ${error.message}`);
-          });
-      });
-    }
+    
     for (const deleteButton of document.querySelectorAll(".delete-button")) {
       deleteButton.addEventListener("click", () => {
         const postId = deleteButton.dataset.postId;

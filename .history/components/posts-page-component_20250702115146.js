@@ -27,6 +27,7 @@ export function renderPostsPageComponent({
   likePost,
   dislikePost,
   deletePost,
+  userId,
 }) {
   const renderPosts = () => {
     const postsHtml = posts
@@ -86,7 +87,7 @@ export function renderPostsPageComponent({
       user,
       goToPage,
     });
-    for (const userEl of document.querySelectorAll(".post-header__user-name")) {
+    for (const userEl of document.querySelectorAll(".post-header")) {
       userEl.addEventListener("click", () => {
         goToPage(USER_POSTS_PAGE, { userId: userEl.dataset.userId });
       });
@@ -97,13 +98,10 @@ export function renderPostsPageComponent({
         const post = posts.find((p) => p.id === postId);
         const token = getToken();
         const action = post.isLiked ? dislikePost : likePost;
-
         if (!token) {
-          showNotification("Пожалуйста, войдите в приложение");
-          goToPage(POSTS_PAGE);
+          goToPage(AUTH_PAGE);
           return;
         }
-
         action({ token, postId })
           .then(({ post: updatedPost }) => {
             const index = posts.findIndex((p) => p.id === postId);

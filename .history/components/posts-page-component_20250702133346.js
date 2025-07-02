@@ -27,6 +27,7 @@ export function renderPostsPageComponent({
   likePost,
   dislikePost,
   deletePost,
+  userId,
 }) {
   const renderPosts = () => {
     const postsHtml = posts

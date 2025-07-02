@@ -48,15 +48,13 @@ export const showNotification = (message) => {
   setTimeout(() => notification.remove(), 3000);
 };
 export const goToPage = (newPage, data = {}) => {
-  if (
-    [
-      POSTS_PAGE,
-      AUTH_PAGE,
-      ADD_POSTS_PAGE,
-      USER_POSTS_PAGE,
-      LOADING_PAGE,
-    ].includes(newPage)
-  ) {
+  if ([
+    POSTS_PAGE,
+    AUTH_PAGE,
+    ADD_POSTS_PAGE,
+    USER_POSTS_PAGE,
+    LOADING_PAGE,
+  ].includes(newPage)) {
     if (newPage === ADD_POSTS_PAGE) {
       page = user ? ADD_POSTS_PAGE : AUTH_PAGE;
       renderApp();
