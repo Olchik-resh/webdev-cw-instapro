@@ -23,11 +23,21 @@ import {
   removeUserFromLocalStorage,
   saveUserToLocalStorage,
 } from "./helpers.js";
+
+const crypto = require("crypto");
+
+function generateNonce() {
+  const nonceBuffer = crypto.randomBytes(16);
+  const nonce = nonceBuffer.toString("base64");
+  return nonce;
+}
+
+console.log(generateNonce());
 export let user = getUserFromLocalStorage();
 export let page = null;
 export let posts = [];
 export const getToken = () =>
-  user && user.token ? `Bearer ${user.token}` : undefined; 
+  user && user.token ? `Bearer ${user.token}` : undefined; // Экспортируем getToken
 export const setUser = (newUser) => {
   user = newUser;
   saveUserToLocalStorage(user);
@@ -37,7 +47,7 @@ export const setUser = (newUser) => {
 export const logout = () => {
   user = null;
   removeUserFromLocalStorage();
-  goToPage(POSTS_PAGE); 
+  goToPage(POSTS_PAGE); // Изменено с AUTH_PAGE на POSTS_PAGE
 };
 
 export const showNotification = (message) => {
@@ -61,11 +71,6 @@ export const goToPage = (newPage, data = {}) => {
       page = user ? ADD_POSTS_PAGE : AUTH_PAGE;
       renderApp();
       return;
-    } else if (newPage === USER_POSTS_PAGE) {
-      // Для USER_POSTS_PAGE не требуется проверка авторизации
-      page = USER_POSTS_PAGE;
-      renderApp();
-      return;
     }
     if (newPage === POSTS_PAGE) {
       page = LOADING_PAGE;
@@ -80,7 +85,7 @@ export const goToPage = (newPage, data = {}) => {
         .catch((error) => {
           console.error("Error fetching posts:", error);
           showNotification(`Ошибка загрузки постов: ${error.message}`);
-          page = POSTS_PAGE;
+          page = POSTS_PAGE; // Остаёмся на POSTS_PAGE даже при ошибке
           renderApp();
         });
       return;

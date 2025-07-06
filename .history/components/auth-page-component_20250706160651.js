@@ -17,15 +17,20 @@ export function renderAuthPageComponent({ appEl, setUser, user, goToPage }) {
               !isLoginMode
                 ? `
               <div class="form-field">
-                   <label class="form-label">
-            <input type="file" class="input button--file" accept="image/*" />
-            Выберите фото
-          </label>
                 <label class="label">Введите имя</label>
                 <input type="text" id="name-input" class="input" placeholder="" />
               </div>
+              <div class="form-field">class="input button--file""file-upload-label secondary-button">
+          <input type="file" class="file-upload-input" accept="image/*" />
+          Выберите фото
+        </label>
+                <label class="label">Фото профиля</label>
+                <button type="file" class="input button--file">Выбрать файл</button>
+                <input type="file" id="image-input" class="input" accept="image/*" />
+                
+              </div>
             `
-               : ""
+                : ""
             }
             <div class="form-field">
               <label class="label">Введите логин</label>

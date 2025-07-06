@@ -27,7 +27,7 @@ export let user = getUserFromLocalStorage();
 export let page = null;
 export let posts = [];
 export const getToken = () =>
-  user && user.token ? `Bearer ${user.token}` : undefined; 
+  user && user.token ? `Bearer ${user.token}` : undefined; // Экспортируем getToken
 export const setUser = (newUser) => {
   user = newUser;
   saveUserToLocalStorage(user);

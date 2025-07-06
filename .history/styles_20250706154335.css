@@ -98,15 +98,15 @@ body {
 .form-inputs {
   display: flex;
   flex-direction: column;
+  gap: 20px;
   width: 100%;
   align-items: center;
-  gap: 10px;
 }
 
 .form-field {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 4px;
   width: 100%;
   max-width: 300px;
   text-align: center;
@@ -157,23 +157,6 @@ body {
   font-family: StratosSkyeng, sans-serif;
 }
 
-.button--file {
-  display: none;
-}
-
-.form-label {
-  height: 36px;
-  box-sizing: border-box;
-  padding: 9px 15px;
-  font-size: 14px;
-  line-height: 18px;
-  border-radius: 5px;
-  background-color: white;
-  transition: background-color 0.2s ease;
-  color: #4f56ce;
-  cursor: pointer;
-}
-
 .form--login .button {
   background-color: #003087;
   color: #fff;
@@ -184,7 +167,6 @@ body {
   background-color: #003087;
   color: #fff;
   font-family: StratosSkyeng, sans-serif;
-  
 }
 
 .form--add-post .button {
@@ -368,7 +350,7 @@ body {
 }
 
 .file-upload-input {
-  display: none;
+  di
 }
 
 .file-upload-label:hover {

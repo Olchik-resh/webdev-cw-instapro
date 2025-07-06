@@ -100,7 +100,6 @@ body {
   flex-direction: column;
   width: 100%;
   align-items: center;
-  gap: 10px;
 }
 
 .form-field {
@@ -184,7 +183,7 @@ body {
   background-color: #003087;
   color: #fff;
   font-family: StratosSkyeng, sans-serif;
-  
+  margin-top: ;
 }
 
 .form--add-post .button {

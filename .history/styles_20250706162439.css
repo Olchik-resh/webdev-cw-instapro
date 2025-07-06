@@ -100,13 +100,13 @@ body {
   flex-direction: column;
   width: 100%;
   align-items: center;
-  gap: 10px;
+  margin-bottom: 10;
 }
 
 .form-field {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 4px;
   width: 100%;
   max-width: 300px;
   text-align: center;
@@ -184,7 +184,6 @@ body {
   background-color: #003087;
   color: #fff;
   font-family: StratosSkyeng, sans-serif;
-  
 }
 
 .form--add-post .button {

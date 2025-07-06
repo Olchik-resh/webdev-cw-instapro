@@ -25,7 +25,7 @@ export function renderAuthPageComponent({ appEl, setUser, user, goToPage }) {
                 <input type="text" id="name-input" class="input" placeholder="" />
               </div>
             `
-               : ""
+                : ""
             }
             <div class="form-field">
               <label class="label">Введите логин</label>

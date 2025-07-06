@@ -80,21 +80,21 @@ export function renderPostsPageComponent({
         <div class="header-container"></div>
         <ul class="posts">${postsHtml}</ul>
       </div>`;
+
     appEl.innerHTML = appHtml;
     renderHeaderComponent({
       element: document.querySelector(".header-container"),
       user,
       goToPage,
     });
-    for (const userEl of document.querySelectorAll(".post-header")) {
-      if (userEl.dataset.userId) {
+    document.addEventListener("DOMContentLoaded", () => {
+      for (const userEl of document.querySelectorAll(".post-header")) {
         userEl.addEventListener("click", () => {
+          console.loge
           goToPage(USER_POSTS_PAGE, { userId: userEl.dataset.userId });
         });
-      } else {
-        console.error("User ID not found for element:", userEl);
       }
-    }
+    });
     for (const likeButton of document.querySelectorAll(".like-button")) {
       likeButton.addEventListener("click", () => {
         const postId = likeButton.dataset.postId;
