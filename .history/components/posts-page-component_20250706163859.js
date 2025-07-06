@@ -87,9 +87,7 @@ export function renderPostsPageComponent({
       goToPage,
     });
     document.addEventListener("DOMContentLoaded", () => {
-      for (const userEl of document.querySelectorAll(
-        ".post-header__user-name"
-      )) {
+      for (const userEl of document.querySelectorAll(".post-header")) {
         if (userEl.dataset.userId) {
           userEl.addEventListener("click", () => {
             goToPage(USER_POSTS_PAGE, { userId: userEl.dataset.userId });
