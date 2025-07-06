@@ -20,9 +20,7 @@ export function renderHeaderComponent({ element, user, goToPage }) {
       </div>`;
   element.innerHTML = html;
 
-  element.querySelector(".logo").addEventListener("click", () => {
-    goToPage(POSTS_PAGE);
-  });
+
 
   element.querySelectorAll("[data-go-to]").forEach((el) => {
     el.addEventListener("click", () => goToPage(el.dataset.goTo));
