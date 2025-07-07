@@ -84,7 +84,7 @@ export async function dislikePost({ token, postId }) {
 export async function registerUser({ login, password, name, imageUrl }) {
   const body = { login, password, name };
   if (imageUrl) body.imageUrl = imageUrl;
-  console.log("Register request body:", body); 
+  console.log("Register request body:", body);
   const response = await fetch(`${baseHost}/api/user`, {
     method: "POST",
     body: JSON.stringify(body),
@@ -136,6 +136,29 @@ export async function verifyToken({ token }) {
     console.error("verifyToken error:", error);
     return false;
   }
+}
+export function onAddPostClick(data) {
+  return new Promise((resolve, reject) => {
+    // Здесь ваш код для отправки данных на сервер
+    // Например, использование fetch или axios для отправки POST запроса
+    fetch('/api/posts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(response => {
+        if (response.ok) {
+          resolve();
+        } else {
+          reject(new Error('Ошибка при отправке данных'));
+        }
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
 }
 export async function deletePost({ token, postId }) {
   try {

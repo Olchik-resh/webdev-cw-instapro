@@ -16,26 +16,27 @@ export function renderAuthPageComponent({ appEl, setUser, user, goToPage }) {
             ${
               !isLoginMode
                 ? `
-              <div class="form-field">
-                   <label class="form-label">
-            <input type="file" id="image-input"  class="input button--file" accept="image/*" />
-            Выберите фото
-          </label>
-          </div>
-           <div class="form-field">
-                <label class="label">Введите имя</label>
-                <input type="text" id="name-input" class="input" placeholder="" />
+                 <div class="form-field">
+               <label class="file-upload-label secondary-button">
+          <input type="file" class="file-upload-input" accept="image/*" />
+          Выберите фото
+        </label>
               </div>
+              <div class="form-field">
+                <label>Имя</label>
+                <input type="text" id="name-input" class="input"  />
+              </div>
+             
             `
                 : ""
             }
             <div class="form-field">
-              <label class="label">Введите логин</label>
-              <input type="text" id="login-input" class="input" placeholder="" />
+              <label>Логин</label>
+              <input type="text" id="login-input" class="input"/>
             </div>
             <div class="form-field">
-              <label class="label">Введите пароль</label>
-              <input type="password" id="password-input" class="input" placeholder="" />
+              <label>Пароль</label>
+              <input type="password" id="password-input" class="input"/>
             </div>
             <div class="form-error"></div>
             <button class="button" id="${
@@ -51,6 +52,32 @@ export function renderAuthPageComponent({ appEl, setUser, user, goToPage }) {
           </div>
         </div>
       </div>`;
+
+    const input = element.querySelector(".file-upload-input");
+    input.addEventListener("change", () => {
+      const file = input.files[0];
+      if (file) {
+        input.disabled = true;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          previewUrl = e.target.result;
+          render();
+        };
+        reader.readAsDataURL(file);
+        uploadImage({ file })
+          .then(({ fileUrl }) => {
+            onImageUrlChange(fileUrl);
+            previewUrl = fileUrl;
+            render();
+          })
+          .catch((error) => {
+            console.error("Error uploading image:", error);
+            showNotification(`Ошибка загрузки изображения: ${error.message}`);
+            onImageUrlChange(previewUrl);
+            input.disabled = false;
+          });
+      }
+    });
     appEl.innerHTML = appHtml;
     renderHeaderComponent({
       element: document.querySelector(".header-container"),

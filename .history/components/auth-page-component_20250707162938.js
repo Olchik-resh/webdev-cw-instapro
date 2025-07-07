@@ -16,26 +16,25 @@ export function renderAuthPageComponent({ appEl, setUser, user, goToPage }) {
             ${
               !isLoginMode
                 ? `
+                 <div class="form-field">
+                <label>
+                <input type="file" id="image-input" class="input" accept="image/*" />
+              </div></label>
               <div class="form-field">
-                   <label class="form-label">
-            <input type="file" id="image-input"  class="input button--file" accept="image/*" />
-            Выберите фото
-          </label>
-          </div>
-           <div class="form-field">
-                <label class="label">Введите имя</label>
-                <input type="text" id="name-input" class="input" placeholder="" />
+                <label>Имя</label>
+                <input type="text" id="name-input" class="input" placeholder="Имя" />
               </div>
+             
             `
                 : ""
             }
             <div class="form-field">
-              <label class="label">Введите логин</label>
-              <input type="text" id="login-input" class="input" placeholder="" />
+              <label>Логин</label>
+              <input type="text" id="login-input" class="input" placeholder="Логин" />
             </div>
             <div class="form-field">
-              <label class="label">Введите пароль</label>
-              <input type="password" id="password-input" class="input" placeholder="" />
+              <label>Пароль</label>
+              <input type="password" id="password-input" class="input" placeholder="Пароль" />
             </div>
             <div class="form-error"></div>
             <button class="button" id="${

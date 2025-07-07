@@ -1,4 +1,4 @@
-const personalKey = "olchik-resh";
+const personalKey = "prodol";
 const baseHost = "https://wedev-api.sky.pro";
 const postsHost = `${baseHost}/api/v1/${personalKey}/instapro`;
 function checkResponse(response) {

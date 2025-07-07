@@ -18,7 +18,7 @@ export function renderAuthPageComponent({ appEl, setUser, user, goToPage }) {
                 ? `
               <div class="form-field">
                    <label class="form-label">
-            <input type="file" id="image-input"  class="input button--file" accept="image/*" />
+            <input type="file" class="input button--file" accept="image/*" />
             Выберите фото
           </label>
           </div>
@@ -27,7 +27,7 @@ export function renderAuthPageComponent({ appEl, setUser, user, goToPage }) {
                 <input type="text" id="name-input" class="input" placeholder="" />
               </div>
             `
-                : ""
+               : ""
             }
             <div class="form-field">
               <label class="label">Введите логин</label>
@@ -143,6 +143,11 @@ export function renderAuthPageComponent({ appEl, setUser, user, goToPage }) {
         }
       });
     }
+    // document
+    //   .querySelector(".button--file")
+    //   .addEventListener("click", function () {
+    //     document.querySelector("#image-input").click();
+    //   });
   };
   renderForm();
 }

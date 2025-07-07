@@ -84,7 +84,7 @@ export async function dislikePost({ token, postId }) {
 export async function registerUser({ login, password, name, imageUrl }) {
   const body = { login, password, name };
   if (imageUrl) body.imageUrl = imageUrl;
-  console.log("Register request body:", body); 
+  console.log("Register request body:", body);
   const response = await fetch(`${baseHost}/api/user`, {
     method: "POST",
     body: JSON.stringify(body),
@@ -137,6 +137,7 @@ export async function verifyToken({ token }) {
     return false;
   }
 }
+
 export async function deletePost({ token, postId }) {
   try {
     const response = await fetch(`${postsHost}/${postId}`, {

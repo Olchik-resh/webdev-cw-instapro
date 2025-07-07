@@ -2,7 +2,7 @@ export function saveUserToLocalStorage(user) {
   window.localStorage.setItem("user", JSON.stringify(user));
 }
 
-export function getUserFromLocalStorage() {
+export function getUserFromLocalStorage(user) {
   try {
     return JSON.parse(window.localStorage.getItem("user"));
   } catch (error) {

@@ -143,6 +143,11 @@ export function renderAuthPageComponent({ appEl, setUser, user, goToPage }) {
         }
       });
     }
+    // document
+    //   .querySelector(".button--file")
+    //   .addEventListener("click", function () {
+    //     document.querySelector("#image-input").click();
+    //   });
   };
   renderForm();
 }

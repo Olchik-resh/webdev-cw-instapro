@@ -17,12 +17,10 @@ export function renderAuthPageComponent({ appEl, setUser, user, goToPage }) {
               !isLoginMode
                 ? `
               <div class="form-field">
-                   <label class="form-label">
-            <input type="file" id="image-input"  class="input button--file" accept="image/*" />
-            Выберите фото
-          </label>
-          </div>
-           <div class="form-field">
+                  <label class="form-label">
+                    <input type="file" class="input button--file" accept="image/*">
+                    Выберите фото
+                  </label>
                 <label class="label">Введите имя</label>
                 <input type="text" id="name-input" class="input" placeholder="" />
               </div>
@@ -51,6 +49,33 @@ export function renderAuthPageComponent({ appEl, setUser, user, goToPage }) {
           </div>
         </div>
       </div>`;
+
+      const input = element.querySelector(".file-upload-input");
+    input.addEventListener("change", () => {
+      const file = input.files[0];
+      if (file) {
+        input.disabled = true;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          previewUrl = e.target.result;
+          render();
+        };
+        reader.readAsDataURL(file);
+        uploadImage({ file })
+          .then(({ fileUrl }) => {
+            onImageUrlChange(fileUrl);
+            previewUrl = fileUrl;
+            render();
+          })
+          .catch((error) => {
+            console.error("Error uploading image:", error);
+            showNotification(`Ошибка загрузки изображения: ${error.message}`);
+            onImageUrlChange(previewUrl);
+            input.disabled = false;
+          });
+      }
+    });
+  };
     appEl.innerHTML = appHtml;
     renderHeaderComponent({
       element: document.querySelector(".header-container"),
