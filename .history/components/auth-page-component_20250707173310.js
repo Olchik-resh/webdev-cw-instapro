@@ -35,7 +35,7 @@ export function renderAuthPageComponent({ appEl, setUser, user, goToPage }) {
             </div>
             <div class="form-field">
               <label class="label">Введите пароль</label>
-              <input type="password" id="password-input" class="input"/>
+              <input type="password" id="password-input" class="input" placeholder="" />
             </div>
             <div class="form-error"></div>
             <button class="button" id="${

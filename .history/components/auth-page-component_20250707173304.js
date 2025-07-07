@@ -24,18 +24,18 @@ export function renderAuthPageComponent({ appEl, setUser, user, goToPage }) {
           </div>
            <div class="form-field">
                 <label class="label">Введите имя</label>
-                <input type="text" id="name-input" class="input"/>
+                <input type="text" id="name-input" class="input"  />
               </div>
             `
                 : ""
             }
             <div class="form-field">
               <label class="label">Введите логин</label>
-              <input type="text" id="login-input" class="input"/>
+              <input type="text" id="login-input" class="input" placeholder="" />
             </div>
             <div class="form-field">
               <label class="label">Введите пароль</label>
-              <input type="password" id="password-input" class="input"/>
+              <input type="password" id="password-input" class="input" placeholder="" />
             </div>
             <div class="form-error"></div>
             <button class="button" id="${

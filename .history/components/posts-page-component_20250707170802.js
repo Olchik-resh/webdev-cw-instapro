@@ -86,13 +86,19 @@ export function renderPostsPageComponent({
       user,
       goToPage,
     });
-
-    for (const userEl of document.querySelectorAll(".post-header")) {
-      userEl.addEventListener("click", () => {
-        goToPage(USER_POSTS_PAGE, { userId: userEl.dataset.userId });
-      });
-    }
-
+    // document.addEventListener("DOMContentLoaded", () => {
+    //   for (const userEl of document.querySelectorAll(
+    //     ".post-header__user-name"
+    //   )) {
+    //     if (userEl.dataset.userId) {
+    //       userEl.addEventListener("click", () => {
+    //         goToPage(USER_POSTS_PAGE, { userId: userEl.dataset.userId });
+    //       });
+    //     } else {
+    //       console.error("User ID not found for element:", userEl);
+    //     }
+    //   }
+    // });
     for (const likeButton of document.querySelectorAll(".like-button")) {
       likeButton.addEventListener("click", () => {
         const postId = likeButton.dataset.postId;

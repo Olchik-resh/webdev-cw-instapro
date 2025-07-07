@@ -87,12 +87,6 @@ export function renderPostsPageComponent({
       goToPage,
     });
 
-    for (const userEl of document.querySelectorAll(".post-header")) {
-      userEl.addEventListener("click", () => {
-        goToPage(USER_POSTS_PAGE, { userId: userEl.dataset.userId });
-      });
-    }
-
     for (const likeButton of document.querySelectorAll(".like-button")) {
       likeButton.addEventListener("click", () => {
         const postId = likeButton.dataset.postId;
