@@ -1,0 +1,437 @@
+/* === Общие стили === */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #fafafa;
+  color: #222;
+}
+/* === Контейнер страницы === */
+.page-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+/* === Шапка === */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 20px 16px;
+  margin-left: -20px;
+  margin-right: -20px;
+  background-color: #fff;
+}
+.logo {
+  margin: 0;
+  font-size: 28px;
+  cursor: pointer;
+  width: 130px;
+  color: #0057b7;
+}
+
+.header-button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #000;
+  font-family: StratosSkyeng, sans-serif;
+}
+.logout-button {
+  width: 130px;
+  text-align: right;
+}
+
+/* === Форма регистрации/авторизации/добавления поста === */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.label {
+  color: #003087;
+}
+
+.form--login {
+  background-color: #e6f0fa;
+}
+
+.form--register {
+  background-color: #d6eaff;
+}
+
+.form--add-post {
+  background-color: #e0f0ff;
+}
+
+.form-title {
+  font-size: 28px;
+  line-height: 35px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form--login .form-title {
+  color: #003087;
+}
+
+.form--register .form-title {
+  color: #0057b7;
+}
+
+.form--add-post .form-title {
+  color: #004aad;
+}
+
+.form-inputs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+}
+
+.textarea {
+  padding: 10px;
+  border: 1px solid #add8e6;
+  background-color: white;
+  border-radius: 6px;
+  font-size: 16px;
+  width: 100%;
+  text-align: center;
+  font-family: StratosSkyeng, sans-serif;
+}
+#description-input::placeholder {
+  color: #003087;
+  font-family: StratosSkyeng, sans-serif;
+}
+.input {
+  padding: 10px;
+  background-color: #f0f8ff;
+  border-radius: 6px;
+  font-size: 16px;
+  width: 100%;
+  text-align: center;
+  font-family: StratosSkyeng, sans-serif;
+}
+
+#image-input {
+  display: none;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.button {
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 8px;
+  width: 100%;
+  max-width: 300px;
+  font-family: StratosSkyeng, sans-serif;
+}
+
+.button--file {
+  display: none;
+}
+
+.form-label {
+  height: 36px;
+  box-sizing: border-box;
+  padding: 9px 15px;
+  font-size: 14px;
+  line-height: 18px;
+  border-radius: 5px;
+  background-color: white;
+  transition: background-color 0.2s ease;
+  color: #4f56ce;
+  cursor: pointer;
+}
+
+.form--login .button {
+  background-color: #003087;
+  color: #fff;
+  font-family: StratosSkyeng, sans-serif;
+}
+
+.form--register .button {
+  background-color: #003087;
+  color: #fff;
+  font-family: StratosSkyeng, sans-serif;
+}
+
+.form--add-post .button {
+  background-color: #0057b7;
+  color: #fff;
+  font-family: StratosSkyeng, sans-serif;
+}
+
+.button--link {
+  background-color: transparent;
+  border: 1px solid #4da8ff;
+  color: #4da8ff;
+  border-radius: 12px;
+  font-size: 14px;
+  margin-top: 0;
+  width: 100%;
+  max-width: 300px;
+  font-family: StratosSkyeng, sans-serif;
+}
+
+.form--login .button--link {
+  color: #ffffff;
+  font-family: StratosSkyeng, sans-serif;
+}
+
+.form--register .button--link {
+  color: #ffffff;
+  font-family: StratosSkyeng, sans-serif;
+}
+
+.form--add-post .button--link {
+  border: 1px solid #004aad;
+  color: #ffffff;
+  font-family: StratosSkyeng, sans-serif;
+}
+
+.form-buttons {
+  margin-top: 16px;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-family: StratosSkyeng, sans-serif;
+}
+.form-error {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+}
+/* === Посты === */
+.posts {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  gap: 20px;
+}
+.post {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+.post-header__user-image {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.post-header__user-name {
+  font-weight: bold;
+  font-size: 16px;
+}
+.post-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+.post-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.post-likes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.like-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.like-button img {
+  transition: transform 0.2s ease, filter 0.2s ease;
+  width: 24px;
+  height: 24px;
+}
+.like-button:hover img {
+  transform: scale(1.2);
+  filter: brightness(0.9) saturate(1.2);
+}
+.like-button img.liked {
+  animation: pulse 0.3s ease;
+  filter: none;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.post-likes-text {
+  font-size: 14px;
+  margin: 0;
+}
+.post-text {
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 10px 0;
+}
+.user-name {
+  font-weight: 500;
+  margin-right: 8px;
+}
+.post-date {
+  font-size: 12px;
+  color: #888;
+  margin-top: 8px;
+}
+.delete-button {
+  margin-top: 12px;
+  background: transparent;
+  color: red;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+/* === Загрузка поста === */
+.add-post-sign {
+  background-image: url("data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 122.88 122.88'%3E%3Ctitle%3Eadd%3C/title%3E%3Cpath d='M61.44,0A61.46,61.46,0,1,1,18,18,61.25,61.25,0,0,1,61.44,0ZM88.6,56.82v9.24a4,4,0,0,1-4,4H70V84.62a4,4,0,0,1-4,4H56.82a4,4,0,0,1-4-4V70H38.26a4,4,0,0,1-4-4V56.82a4,4,0,0,1,4-4H52.84V38.26a4,4,0,0,1,4-4h9.24a4,4,0,0,1,4,4V52.84H84.62a4,4,0,0,1,4,4Zm8.83-31.37a50.92,50.92,0,1,0,14.9,36,50.78,50.78,0,0,0-14.9-36Z'/%3E%3C/svg%3E");
+  height: 30px;
+  width: 30px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+/* === Форма добавления поста === */
+.upload-image-container {
+  width: 100%;
+  max-width: 300px;
+}
+.label {
+  color: #003087;
+}
+.file-upload-label {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  border: 1px dashed #add8e6;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.file-upload-input {
+  display: none;
+}
+
+.file-upload-label:hover {
+  background-color: #e6f0fa;
+}
+
+.file-upload-image-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.file-upload-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid #add8e6;
+}
+
+/* Отображения постов на странице пользователя */
+
+.posts-user-header {
+  cursor: pointer;
+  list-style: none;
+}
+
+  .posts-user-header__user-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+/* === Ошибки и уведомления === */
+.error-message {
+  background-color: #ffe6e6;
+  color: #d32f2f;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #d32f2f;
+  border-radius: 4px;
+  text-align: center;
+}
+/* === Адаптивность (мобильные) === */
+@media (max-width: 600px) {
+  .page-container {
+    padding: 0 10px;
+  }
+  .post-header {
+    flex-direction: row;
+    align-items: center;
+  }
+  .post-header__user-name {
+    font-size: 16px;
+  }
+  .post-image {
+    width: 100%;
+    height: auto;
+  }
+  .like-button img {
+    width: 20px;
+    height: 20px;
+  }
+  .delete-button {
+    font-size: 14px;
+  }
+}
