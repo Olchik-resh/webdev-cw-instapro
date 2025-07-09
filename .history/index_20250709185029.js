@@ -63,6 +63,7 @@ export const goToPage = (newPage, data = {}) => {
       renderApp();
       return;
     } else if (newPage === USER_POSTS_PAGE) {
+      // Для USER_POSTS_PAGE не требуется проверка авторизации
       page = USER_POSTS_PAGE;
       renderApp();
       return;

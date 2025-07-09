@@ -63,28 +63,12 @@ export const goToPage = (newPage, data = {}) => {
       renderApp();
       return;
     } else if (newPage === USER_POSTS_PAGE) {
+      // Для USER_POSTS_PAGE не требуется проверка авторизации
       page = USER_POSTS_PAGE;
       renderApp();
       return;
     }
-    if (newPage === POSTS_PAGE) {
-      page = LOADING_PAGE;
-      renderApp();
-      const token = getToken();
-      getPosts({ token })
-        .then((newPosts) => {
-          page = POSTS_PAGE;
-          posts = newPosts;
-          renderApp();
-        })
-        .catch((error) => {
-          console.error("Error fetching posts:", error);
-          showNotification(`Ошибка загрузки постов: ${error.message}`);
-          page = POSTS_PAGE;
-          renderApp();
-        });
-      return;
-    }
+    
 
     if (newPage === USER_POSTS_PAGE) {
       page = LOADING_PAGE;

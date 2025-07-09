@@ -38,7 +38,9 @@ export function renderPostsPageComponent({
         return `
           <li class="post">
             <div class="post-header" data-user-id="${post.user.id}">
-              <img src="${post.user.imageUrl}" class="post-header__user-image" alt="User avatar">
+              <img src="${
+                https://storage.mds.yandex.net/get-bstor/14919106/4e091689-487a-4416-a709-36126268ab46.jpeg
+              " class="post-header__user-image" alt="User avatar">
               <p class="post-header__user-name">${escapeHTML(
                 post.user.name
               )}</p>
@@ -139,4 +141,5 @@ export function renderPostsPageComponent({
     }
   };
   renderPosts();
+  console.log(postsHtml);
 }
