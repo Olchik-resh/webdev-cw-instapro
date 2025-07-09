@@ -30,6 +30,7 @@ export function renderPostsPageComponent({
 }) {
   const renderPosts = () => {
     const postsHtml = posts
+    .filter((post) => !userId || post.user.id === userId) // Фильтруем посты по userId
       .map((post) => {
         const createdAt = formatDistanceToNow(new Date(post.createdAt), {
           addSuffix: true,
@@ -38,9 +39,7 @@ export function renderPostsPageComponent({
         return `
           <li class="post">
             <div class="post-header" data-user-id="${post.user.id}">
-              <img src="${
-                post.user.imageUrl
-              }" class="post-header__user-image" alt="User avatar">
+              <img src="${post.user.imageUrl}" class="post-header__user-image" alt="User avatar">
               <p class="post-header__user-name">${escapeHTML(
                 post.user.name
               )}</p>

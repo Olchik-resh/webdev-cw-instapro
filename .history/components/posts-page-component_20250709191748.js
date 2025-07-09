@@ -30,6 +30,7 @@ export function renderPostsPageComponent({
 }) {
   const renderPosts = () => {
     const postsHtml = posts
+      .filter((post) => !userId || post.user.id === userId) // Фильтруем посты по userId
       .map((post) => {
         const createdAt = formatDistanceToNow(new Date(post.createdAt), {
           addSuffix: true,
