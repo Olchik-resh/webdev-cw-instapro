@@ -392,7 +392,7 @@ body {
 .posts-user-header__user-name {
   padding: 20px 16px;
   font-weight: bold;
-  font-size: 16px;
+    font-size: 16px;
 }
 
 .posts-user-header {

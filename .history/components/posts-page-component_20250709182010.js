@@ -81,6 +81,7 @@ export function renderPostsPageComponent({
         <ul class="posts">${postsHtml}</ul>
       </div>`;
 
+
     appEl.innerHTML = appHtml;
     renderHeaderComponent({
       element: document.querySelector(".header-container"),

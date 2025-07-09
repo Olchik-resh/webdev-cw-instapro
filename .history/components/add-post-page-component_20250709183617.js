@@ -45,6 +45,26 @@ export function renderAddPostPageComponent({ appEl, onAddPostClick }) {
       errorEl.textContent = message;
     };
 
+    //   addButton.addEventListener("click", () => {
+    //     const description = document
+    //       .getElementById("description-input")
+    //       .value.trim();
+    //     setError("");
+    //     if (!description) {
+    //       setError("Введите описание поста");
+    //       return;
+    //     }
+    //     if (!imageUrl) {
+    //       setError("Выберите изображение");
+    //       return;
+    //     }
+    //     addButton.disabled = true;
+    //     onAddPostClick({ description, imageUrl }).finally(() => {
+    //       addButton.disabled = false;
+    //     });
+    //   });
+    // };
+
     addButton.addEventListener("click", async () => {
       const description = document
         .getElementById("description-input")

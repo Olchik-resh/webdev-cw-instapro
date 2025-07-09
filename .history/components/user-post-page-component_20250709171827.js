@@ -16,12 +16,12 @@ export function renderUserPostsPageComponent({
       <div class="header-container"></div>
       <div class="posts-user-header">
       <img src="${
-        posts[0]?.user.imageUrl
+        posts.user.imageUrl
       }" class="post-header__user-image" alt="User avatar">
         <p class="posts-user-header__user-name">${sanitizeHtml(
           posts[0]?.user.name || ""
         )}</p>
-      </div>
+      
       <ul class="posts">
         ${posts
           .map(

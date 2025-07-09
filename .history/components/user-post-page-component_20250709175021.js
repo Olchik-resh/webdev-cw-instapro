@@ -11,6 +11,7 @@ export function renderUserPostsPageComponent({
   likePost,
   dislikePost,
 }) {
+  
   const appHtml = `
     <div class="page-container">
       <div class="header-container"></div>

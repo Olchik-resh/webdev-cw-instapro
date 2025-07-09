@@ -45,7 +45,7 @@ export function renderAddPostPageComponent({ appEl, onAddPostClick }) {
       errorEl.textContent = message;
     };
 
-    addButton.addEventListener("click", async () => {
+    addButton.addEventListener("click", () => {
       const description = document
         .getElementById("description-input")
         .value.trim();
@@ -59,13 +59,9 @@ export function renderAddPostPageComponent({ appEl, onAddPostClick }) {
         return;
       }
       addButton.disabled = true;
-      try {
-        await onAddPostClick({ description, imageUrl });
-      } catch (error) {
-        // Обработка ошибки
-      } finally {
+      onAddPostClick({ description, imageUrl }).finally(() => {
         addButton.disabled = false;
-      }
+      });
     });
   };
 

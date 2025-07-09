@@ -12,52 +12,7 @@ export function renderUserPostsPageComponent({
   dislikePost,
 }) {
   const appHtml = `
-    <div class="page-container">
-      <div class="header-container"></div>
-      <div class="posts-user-header">
-      <img src="${
-        posts[0]?.user.imageUrl
-      }" class="post-header__user-image" alt="User avatar">
-        <p class="posts-user-header__user-name">${sanitizeHtml(
-          posts[0]?.user.name || ""
-        )}</p>
-      </div>
-      <ul class="posts">
-        ${posts
-          .map(
-            (post) => `
-              <li class="post">
-                <div class="post-image-container">
-                  <img class="post-image" src="${post.imageUrl}">
-                </div>
-                <div class="post-likes">
-                  <button data-post-id="${post.id}" data-is-liked="${
-              post.isLiked
-            }" class="like-button">
-                    <img src="./assets/images/${
-                      post.isLiked ? "like-active.svg" : "like-not-active.svg"
-                    }">
-                  </button>
-                  <p class="post-likes-text">
-                    Нравится: <strong>${post.likes.length}</strong>
-                  </p>
-                </div>
-                <p class="post-text">
-                  <span class="user-name">${sanitizeHtml(post.user.name)}</span>
-                  ${sanitizeHtml(post.description)}
-                </p>
-                <p class="post-date">
-                  ${formatDistanceToNow(new Date(post.createdAt), {
-                    locale: ru,
-                  })} назад
-                </p>
-              </li>
-            `
-          )
-          .join("")}
-      </ul>
-    </div>
-  `;
+   
 
   appEl.innerHTML = appHtml;
 

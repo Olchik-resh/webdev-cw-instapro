@@ -11,12 +11,13 @@ export function renderUserPostsPageComponent({
   likePost,
   dislikePost,
 }) {
+  const userPosts = posts.filter((post) => post.user.id === userId);
   const appHtml = `
     <div class="page-container">
       <div class="header-container"></div>
       <div class="posts-user-header">
       <img src="${
-        posts[0]?.user.imageUrl
+        userPosts[0]?.user.imageUrl
       }" class="post-header__user-image" alt="User avatar">
         <p class="posts-user-header__user-name">${sanitizeHtml(
           posts[0]?.user.name || ""

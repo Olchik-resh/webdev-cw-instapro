@@ -11,6 +11,7 @@ export function renderUserPostsPageComponent({
   likePost,
   dislikePost,
 }) {
+  const po = posts.filter(post => post.user.id === userId);
   const appHtml = `
     <div class="page-container">
       <div class="header-container"></div>

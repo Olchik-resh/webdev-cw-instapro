@@ -46,28 +46,27 @@ export function renderAddPostPageComponent({ appEl, onAddPostClick }) {
     };
 
     addButton.addEventListener("click", async () => {
-      const description = document
-        .getElementById("description-input")
-        .value.trim();
-      setError("");
-      if (!description) {
-        setError("Введите описание поста");
-        return;
-      }
-      if (!imageUrl) {
-        setError("Выберите изображение");
-        return;
-      }
-      addButton.disabled = true;
-      try {
-        await onAddPostClick({ description, imageUrl });
-      } catch (error) {
-        // Обработка ошибки
-      } finally {
-        addButton.disabled = false;
-      }
-    });
-  };
+  const description = document
+    .getElementById("description-input")
+    .value.trim();
+  setError("");
+  if (!description) {
+    setError("Введите описание поста");
+    return;
+  }
+  if (!imageUrl) {
+    setError("Выберите изображение");
+    return;
+  }
+  addButton.disabled = true;
+  try {
+    await onAddPostClick({ description, imageUrl });
+  } catch (error) {
+    // Обработка ошибки
+  } finally {
+    addButton.disabled = false;
+  }
+});
 
   render();
 }

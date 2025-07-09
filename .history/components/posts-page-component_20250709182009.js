@@ -39,7 +39,7 @@ export function renderPostsPageComponent({
           <li class="post">
             <div class="post-header" data-user-id="${post.user.id}">
               <img src="${
-                post.user.imageUrl
+                postх.user.imageUrl
               }" class="post-header__user-image" alt="User avatar">
               <p class="post-header__user-name">${escapeHTML(
                 post.user.name
@@ -80,6 +80,7 @@ export function renderPostsPageComponent({
         <div class="header-container"></div>
         <ul class="posts">${postsHtml}</ul>
       </div>`;
+
 
     appEl.innerHTML = appHtml;
     renderHeaderComponent({
