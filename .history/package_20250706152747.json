@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "node index.js".
+  "dev": "webpack --mode development --watch"
+  },
+  "dependencies": {
+    "date-fns": "^4.1.0"
+  }
+}
