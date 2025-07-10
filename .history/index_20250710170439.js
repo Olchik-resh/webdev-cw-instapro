@@ -27,13 +27,8 @@ import {
 export let user = getUserFromLocalStorage();
 export let page = null;
 export let posts = [];
-export const getToken = () => {
-  if (user && user.token) {
-    return `Bearer ${user.token}`;
-  } else {
-    return "default_token";
-  }
-};
+export const getToken = () =>
+  user && user.token ? `Bearer ${user.token}` : undefined;
 export const setUser = (newUser) => {
   user = newUser;
   saveUserToLocalStorage(user);
@@ -71,8 +66,7 @@ export const goToPage = (newPage, data = {}) => {
     if (newPage === POSTS_PAGE) {
       page = LOADING_PAGE;
       renderApp();
-      const token = getToken(); // Предполагаем, что getToken() всегда возвращает токен, независимо от авторизации
-      getPosts({ token })
+      getPosts()
         .then((newPosts) => {
           page = POSTS_PAGE;
           posts = newPosts;

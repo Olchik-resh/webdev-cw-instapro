@@ -31,6 +31,7 @@ export const getToken = () => {
   if (user && user.token) {
     return `Bearer ${user.token}`;
   } else {
+    // Возвращаем заранее заданное значение по умолчанию
     return "default_token";
   }
 };
