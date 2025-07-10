@@ -61,7 +61,7 @@ export function renderPostsPageComponent({
               </p>
             </div>
             <p class="post-text">
-              <span class="user-name">${escapeHTML(post.user.login)}</span>
+              <span class="user-name">${escapeHTML(post.use)}</span>
               ${escapeHTML(post.description)}
             </p>
             <p class="post-date">${createdAt}</p>

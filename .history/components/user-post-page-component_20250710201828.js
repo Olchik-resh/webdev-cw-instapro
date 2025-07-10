@@ -1,8 +1,6 @@
 import { renderHeaderComponent } from "./header-component.js";
 import { formatDistanceToNow } from "date-fns";
 import { ru } from "date-fns/locale";
-import { getToken } from "../index.js";
-// import { renderPosts } from "./posts-page-component.js";
 
 export function renderUserPostsPageComponent({
   appEl,
@@ -45,9 +43,7 @@ export function renderUserPostsPageComponent({
                   </p>
                 </div>
                 <p class="post-text">
-                  <span class="user-name">${sanitizeHtml(
-                    post.user.login
-                  )}</span>
+                  <span class="user-name">${sanitizeHtml(post.user.login)}</span>
                   ${sanitizeHtml(post.description)}
                 </p>
                 <p class="post-date">
@@ -100,34 +96,34 @@ export function renderUserPostsPageComponent({
   //         showNotification("Ошибка при изменении лайка");
   //       });
   //   });
-  //   }
-  // }
-  for (const likeButton of document.querySelectorAll(".like-button")) {
-    likeButton.addEventListener("click", () => {
-      const postId = likeButton.dataset.postId;
-      const post = posts.find((p) => p.id === postId);
-      const token = getToken();
-      const action = post.isLiked ? dislikePost : likePost;
+//   }
+// }
+for (const likeButton of document.querySelectorAll(".like-button")) {
+      likeButton.addEventListener("click", () => {
+        const postId = likeButton.dataset.postId;
+        const post = posts.find((p) => p.id === postId);
+        const token = getToken();
+        const action = post.isLiked ? dislikePost : likePost;
 
-      if (!token) {
-        showNotification("Пожалуйста, войдите в приложение");
-        goToPage(POSTS_PAGE);
-        return;
-      }
+        if (!token) {
+          showNotification("Пожалуйста, войдите в приложение");
+          goToPage(POSTS_PAGE);
+          return;
+        }
 
-      action({ token, postId })
-        .then(({ post: updatedPost }) => {
-          const index = posts.findIndex((p) => p.id === postId);
-          posts[index] = updatedPost;
-          // renderPosts();
-        })
-        .catch((error) => {
-          console.error("Error liking post:", error);
-          showNotification(`Ошибка лайка: ${error.message}`);
-        });
-    });
-  }
-}
+        action({ token, postId })
+          .then(({ post: updatedPost }) => {
+            const index = posts.findIndex((p) => p.id === postId);
+            posts[index] = updatedPost;
+            renderPosts();
+          })
+          .catch((error) => {
+            console.error("Error liking post:", error);
+            showNotification(`Ошибка лайка: ${error.message}`);
+          });
+      });
+    }
+    
 
 function sanitizeHtml(text) {
   const div = document.createElement("div");

@@ -119,7 +119,7 @@ export function renderUserPostsPageComponent({
         .then(({ post: updatedPost }) => {
           const index = posts.findIndex((p) => p.id === postId);
           posts[index] = updatedPost;
-          // renderPosts();
+          renderPosts();
         })
         .catch((error) => {
           console.error("Error liking post:", error);

@@ -3,6 +3,7 @@ import { renderHeaderComponent } from "./header-component.js";
 import { formatDistanceToNow } from "date-fns";
 import { ru } from "date-fns/locale";
 import { getToken, showNotification } from "../index.js";
+import { likePost, dislikePost } from './api.js';
 
 export function escapeHTML(str) {
   if (!str) return str;
