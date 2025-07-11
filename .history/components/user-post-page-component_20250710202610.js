@@ -33,17 +33,17 @@ export function renderUserPostsPageComponent({
                   <img class="post-image" src="${post.imageUrl}">
                 </div>
                 <div class="post-likes">
-              <button data-post-id="${post.id}" class="like-button ${
-              post.isLiked ? "liked" : ""
-            }">
-                <img src="./assets/images/like-${
-                  post.isLiked ? "active" : "not-active"
-                }.svg">
-              </button>
-              <p class="post-likes-text">
-                Нравится: <strong>${post.likes.length}</strong>
-              </p>
-            </div>
+                  <button data-post-id="${post.id}" data-is-liked="${
+              post.isLiked
+            }" class="like-button">
+                    <img src="./assets/images/${
+                      post.isLiked ? "like-active.svg" : "like-not-active.svg"
+                    }">
+                  </button>
+                  <p class="post-likes-text">
+                    Нравится: <strong>${post.likes.length}</strong>
+                  </p>
+                </div>
                 <p class="post-text">
                   <span class="user-name">${sanitizeHtml(
                     post.user.login
@@ -71,9 +71,42 @@ export function renderUserPostsPageComponent({
     goToPage,
   });
 
-  for (const likeBtn of document.querySelectorAll(".like-button")) {
-    likeBtn.addEventListener("click", () => {
-      const postId = likeBtn.dataset.postId;
+  // for (let likeBtn of document.querySelectorAll(".like-button")) {
+  //   likeBtn.addEventListener("click", () => {
+  //     if (!user) {
+  //       showNotification("Авторизуйтесь для лайков");
+  //       return;
+  //     }
+  //     const postId = likeBtn.dataset.postId;
+  //     const isLiked = likeBtn.dataset.isLiked === "true";
+  //     const action = isLiked ? dislikePost : likePost;
+  //     action({ postId, token: user.token })
+  //       .then((response) => {
+  //         const post = posts.find((p) => p.id === postId);
+  //         post.isLiked = response.post.isLiked;
+  //         post.likes = response.post.likes;
+  //         renderUserPostsPageComponent({
+  //           appEl,
+  //           userId,
+  //           posts,
+  //           user,
+  //           goToPage,
+  //           likePost,
+  //           dislikePost,
+  //         });
+  //       })
+  //       .catch((error) => {
+  //         console.error(error);
+  //         showNotification("Ошибка при изменении лайка");
+  //       });
+  //   });
+  //   }
+  // }
+
+  // код с post-page
+  for (const likeButton of document.querySelectorAll(".like-button")) {
+    likeButton.addEventListener("click", () => {
+      const postId = likeButton.dataset.postId;
       const post = posts.find((p) => p.id === postId);
       const token = getToken();
       const action = post.isLiked ? dislikePost : likePost;
@@ -88,20 +121,12 @@ export function renderUserPostsPageComponent({
         .then(({ post: updatedPost }) => {
           const index = posts.findIndex((p) => p.id === postId);
           posts[index] = updatedPost;
+          // renderPosts();
         })
         .catch((error) => {
           console.error("Error liking post:", error);
           showNotification(`Ошибка лайка: ${error.message}`);
         });
-      renderUserPostsPageComponent({
-        appEl,
-        userId,
-        posts,
-        user,
-        goToPage,
-        likePost,
-        dislikePost,
-      });
     });
   }
 }

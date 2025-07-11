@@ -71,6 +71,47 @@ export function renderUserPostsPageComponent({
     goToPage,
   });
 
+  // for (let likeBtn of document.querySelectorAll(".like-button")) {
+  //   likeBtn.addEventListener("click", () => {
+  //     if (!user) {
+  //       showNotification("Авторизуйтесь для лайков");
+  //       return;
+  //     }
+  //     const postId = likeBtn.dataset.postId;
+  //     const isLiked = likeBtn.dataset.isLiked === "true";
+  //     const action = isLiked ? dislikePost : likePost;
+  //     action({ postId, token: user.token })
+  //       .then((response) => {
+  //         const post = posts.find((p) => p.id === postId);
+  //         post.isLiked = response.post.isLiked;
+  //         post.likes = response.post.likes;
+
+  //         // Обновление визуального состояния кнопки
+  //         if (post.isLiked) {
+  //           likeBtn.classList.add("liked"); // Добавляем класс "liked" для стилизации кнопки
+  //           likeBtn.dataset.isLiked = "true"; // Обновляем атрибут data-is-liked
+  //         } else {
+  //           likeBtn.classList.remove("liked"); // Удаляем класс "liked"
+  //           likeBtn.dataset.isLiked = "false"; // Обновляем атрибут data-is-liked
+  //         }
+
+  //         renderUserPostsPageComponent({
+  //           appEl,
+  //           userId,
+  //           posts,
+  //           user,
+  //           goToPage,
+  //           likePost,
+  //           dislikePost,
+  //         });
+  //       })
+  //       .catch((error) => {
+  //         console.error(error);
+  //         showNotification("Ошибка при изменении лайка");
+  //       });
+  //   });
+  // }
+
   for (const likeBtn of document.querySelectorAll(".like-button")) {
     likeBtn.addEventListener("click", () => {
       const postId = likeBtn.dataset.postId;
@@ -93,15 +134,6 @@ export function renderUserPostsPageComponent({
           console.error("Error liking post:", error);
           showNotification(`Ошибка лайка: ${error.message}`);
         });
-      renderUserPostsPageComponent({
-        appEl,
-        userId,
-        posts,
-        user,
-        goToPage,
-        likePost,
-        dislikePost,
-      });
     });
   }
 }
