@@ -1,4 +1,4 @@
-import { AUTH_PAGE, USER_POSTS_PAGE } from "../routes.js";
+import { USER_POSTS_PAGE } from "../routes.js";
 import { renderHeaderComponent } from "./header-component.js";
 import { formatDistanceToNow } from "date-fns";
 import { ru } from "date-fns/locale";
@@ -103,7 +103,7 @@ export function renderPostsPageComponent({
 
         if (!token) {
           showNotification("Пожалуйста, войдите в приложение");
-          goToPage(AUTH_PAGE);
+          goToPage(AU);
           return;
         }
 
